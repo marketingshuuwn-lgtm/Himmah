@@ -1,0 +1,16 @@
+{
+  "name": "علامة · ALAMAA — نظام الموارد البشرية",
+  "short_name": "ALAMAA",
+  "description": "منصة علامة لإدارة الموارد البشرية والرواتب والعقود الرقمية والتقييمات.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#110a29",
+  "theme_color": "#110a29",
+  "orientation": "portrait",
+  "dir": "rtl",
+  "lang": "ar",
+  "icons": [
+    { "src": "/__l5e/assets-v1/d535efbc-c8d9-48be-b37a-dcaaec54012b/favicon.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/__l5e/assets-v1/d535efbc-c8d9-48be-b37a-dcaaec54012b/favicon.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

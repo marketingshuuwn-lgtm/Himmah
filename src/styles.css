@@ -1,0 +1,198 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-glow: var(--primary-glow);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: "Tajawal", "Cairo", system-ui, sans-serif;
+}
+
+/* ALAMAA brand:
+ *   Deep navy  #110a29  → oklch(0.155 0.06 290)
+ *   Sky cyan   #4cc4e8  → oklch(0.78 0.115 225)
+ *   White      #ffffff
+ */
+:root {
+  --radius: 0.875rem;
+
+  --brand-navy: oklch(0.155 0.06 290);
+  --brand-navy-2: oklch(0.22 0.07 285);
+  --brand-cyan: oklch(0.78 0.115 225);
+  --brand-cyan-soft: oklch(0.88 0.08 220);
+
+  --background: oklch(0.985 0.005 260);
+  --foreground: oklch(0.18 0.05 285);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.05 285);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.05 285);
+
+  --primary: var(--brand-navy);
+  --primary-foreground: oklch(0.985 0.005 260);
+  --primary-glow: var(--brand-cyan);
+
+  --secondary: oklch(0.96 0.012 260);
+  --secondary-foreground: var(--brand-navy);
+  --muted: oklch(0.96 0.012 260);
+  --muted-foreground: oklch(0.48 0.035 285);
+  --accent: oklch(0.94 0.04 225);
+  --accent-foreground: var(--brand-navy);
+
+  --destructive: oklch(0.60 0.24 27);
+  --destructive-foreground: oklch(0.99 0.005 250);
+  --success: oklch(0.65 0.17 155);
+  --success-foreground: oklch(0.99 0.005 250);
+  --warning: oklch(0.78 0.16 75);
+  --warning-foreground: oklch(0.20 0.05 60);
+
+  --border: oklch(0.91 0.018 270);
+  --input: oklch(0.91 0.018 270);
+  --ring: var(--brand-cyan);
+
+  --gradient-primary: linear-gradient(135deg, oklch(0.155 0.06 290), oklch(0.30 0.09 280));
+  --gradient-brand: linear-gradient(135deg, oklch(0.155 0.06 290) 0%, oklch(0.22 0.07 285) 55%, oklch(0.78 0.115 225) 100%);
+  --gradient-subtle: linear-gradient(180deg, oklch(0.99 0.005 260), oklch(0.95 0.018 260));
+  --gradient-cyan-glow: radial-gradient(60% 60% at 50% 0%, oklch(0.78 0.115 225 / 0.35), transparent 70%);
+
+  --shadow-elegant: 0 18px 40px -20px color-mix(in oklab, var(--brand-navy) 45%, transparent);
+  --shadow-card: 0 1px 2px 0 oklch(0 0 0 / 0.04), 0 8px 24px -12px oklch(0.18 0.05 285 / 0.10);
+  --shadow-glow: 0 0 0 1px oklch(0.78 0.115 225 / 0.25), 0 8px 30px -8px oklch(0.78 0.115 225 / 0.35);
+
+  --sidebar: var(--brand-navy);
+  --sidebar-foreground: oklch(0.96 0.01 260);
+  --sidebar-primary: var(--brand-cyan);
+  --sidebar-primary-foreground: var(--brand-navy);
+  --sidebar-accent: oklch(0.24 0.07 285);
+  --sidebar-accent-foreground: oklch(0.96 0.01 260);
+  --sidebar-border: oklch(1 0 0 / 0.08);
+  --sidebar-ring: var(--brand-cyan);
+}
+
+.dark {
+  --background: oklch(0.13 0.05 290);
+  --foreground: oklch(0.96 0.01 260);
+  --card: oklch(0.18 0.06 288);
+  --card-foreground: oklch(0.96 0.01 260);
+  --popover: oklch(0.18 0.06 288);
+  --popover-foreground: oklch(0.96 0.01 260);
+  --primary: var(--brand-cyan);
+  --primary-foreground: oklch(0.13 0.05 290);
+  --primary-glow: oklch(0.85 0.10 220);
+  --secondary: oklch(0.22 0.06 288);
+  --secondary-foreground: oklch(0.96 0.01 260);
+  --muted: oklch(0.22 0.06 288);
+  --muted-foreground: oklch(0.72 0.025 260);
+  --accent: oklch(0.28 0.07 285);
+  --accent-foreground: oklch(0.96 0.01 260);
+  --destructive: oklch(0.65 0.22 27);
+  --destructive-foreground: oklch(0.96 0.01 260);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: var(--brand-cyan);
+  --sidebar: oklch(0.10 0.05 290);
+  --sidebar-foreground: oklch(0.96 0.01 260);
+  --sidebar-primary: var(--brand-cyan);
+  --sidebar-primary-foreground: oklch(0.10 0.05 290);
+  --sidebar-accent: oklch(0.20 0.06 288);
+  --sidebar-accent-foreground: oklch(0.96 0.01 260);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: var(--brand-cyan);
+}
+
+@layer base {
+  @font-face {
+    font-family: "Tajawal";
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url("https://fonts.gstatic.com/s/tajawal/v11/Iura6YBj_oCad4k1nzGBC5xLhLE.woff2") format("woff2");
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer base {
+  html, body, input, textarea, select, button, table {
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  /* Force LTR direction on numeric/time content so digits & separators
+   * render in the expected order under RTL layout. */
+  time,
+  .num,
+  [data-numeric],
+  input[type="time"],
+  input[type="date"],
+  input[type="datetime-local"],
+  input[type="number"] {
+    direction: ltr;
+    unicode-bidi: isolate;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Mirror common directional icons in RTL */
+  [dir="rtl"] .rtl-flip {
+    transform: scaleX(-1);
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  body { background: white !important; }
+  .print-page { box-shadow: none !important; border: 0 !important; }
+}
+

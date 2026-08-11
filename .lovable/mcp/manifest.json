@@ -1,0 +1,160 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.1",
+  "path": "/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://mgnryhbfkcxairhsglpc.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "alamaa-hr-mcp",
+      "version": "0.1.0",
+      "title": "ALAMAA HR"
+    },
+    "tools": [
+      {
+        "name": "whoami",
+        "title": "Who am I",
+        "description": "Return the signed-in user's profile, employee record, and roles.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_leave_types",
+        "title": "List leave types",
+        "description": "List active leave types available in this workspace.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_my_leaves",
+        "title": "List my leave requests",
+        "description": "List the signed-in employee's leave requests, most recent first.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20,
+              "description": "Max rows to return."
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "pending",
+                "approved",
+                "rejected",
+                "cancelled"
+              ],
+              "description": "Filter by status."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "create_leave_request",
+        "title": "Create leave request",
+        "description": "Submit a leave request for the signed-in employee. Status is set to pending.",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "leave_type_id": {
+              "type": "string",
+              "format": "uuid",
+              "description": "Leave type UUID (see list_leave_types)."
+            },
+            "start_date": {
+              "type": "string",
+              "description": "ISO date YYYY-MM-DD."
+            },
+            "end_date": {
+              "type": "string",
+              "description": "ISO date YYYY-MM-DD."
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "leave_type_id",
+            "start_date",
+            "end_date"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_my_attendance",
+        "title": "List my attendance",
+        "description": "List the signed-in employee's attendance records within an optional date range.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "ISO date (YYYY-MM-DD) lower bound."
+            },
+            "to": {
+              "type": "string",
+              "description": "ISO date (YYYY-MM-DD) upper bound."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 200,
+              "default": 30
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}

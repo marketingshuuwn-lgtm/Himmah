@@ -1,0 +1,1 @@
+ALTER TABLE public.payroll_runs ADD COLUMN IF NOT EXISTS approved_by uuid REFERENCES auth.users(id);
